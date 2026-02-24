@@ -12,6 +12,7 @@ import VoiceMessagesWall from '@/components/VoiceMessagesWall';
 import LevelUpReveal from '@/components/LevelUpReveal';
 import MemoryDrop from '@/components/MemoryDrop';
 import ShareCTA from '@/components/ShareCTA';
+import ConfigBanner from '@/components/ConfigBanner';
 import { config } from '@/config';
 
 export default function Home() {
@@ -40,6 +41,7 @@ export default function Home() {
         <LevelUpReveal age={config.age} />
         <MemoryDrop />
         <ShareCTA />
+        <ConfigBanner />
       </motion.main>
     </>
   );

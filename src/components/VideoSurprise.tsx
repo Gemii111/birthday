@@ -57,7 +57,7 @@ export default function VideoSurprise({ videoUrl, posterUrl }: VideoSurpriseProp
               <span className="text-6xl">⚠️</span>
               <p className="text-lg">الفيديو مش شغال</p>
               <p className="text-sm text-cream-300/70 max-w-md">
-                تأكد إن الملف موجود في <code className="bg-slate-700 px-2 py-1 rounded">public/video.mp4</code> وأن الصيغة MP4 (H.264)
+                لو على Vercel: تأكد إن الملف أقل من 50MB، أو ارفعه على YouTube/Supabase وغير videoUrl في config
               </p>
             </div>
           ) : (

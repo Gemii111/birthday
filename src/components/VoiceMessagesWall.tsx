@@ -132,7 +132,9 @@ export default function VoiceMessagesWall() {
       setName('');
     } catch (err) {
       setError(
-        'فشل الرفع. تأكد من تشغيل supabase-voice-messages.sql في Supabase.'
+        supabase
+          ? 'فشل الرفع. تأكد من تشغيل supabase-voice-messages.sql في Supabase.'
+          : 'أضف NEXT_PUBLIC_SUPABASE_URL و NEXT_PUBLIC_SUPABASE_ANON_KEY في Vercel ثم أعد النشر'
       );
       console.error(err);
     }

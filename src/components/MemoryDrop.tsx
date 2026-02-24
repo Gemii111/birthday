@@ -55,10 +55,12 @@ export default function MemoryDrop() {
   const [content, setContent] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shared, setShared] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !content.trim()) return;
+    setError('');
     setIsSubmitting(true);
 
     try {
@@ -78,7 +80,6 @@ export default function MemoryDrop() {
         throw new Error('No Supabase');
       }
     } catch {
-      // Demo: add locally
       setMemories((m) => [
         {
           id: String(Date.now()),
@@ -91,6 +92,26 @@ export default function MemoryDrop() {
       ]);
       setName('');
       setContent('');
+    } catch {
+      setError(
+        supabase
+          ? 'حدث خطأ. حاول مرة تانية.'
+          : 'أضف NEXT_PUBLIC_SUPABASE_URL و NEXT_PUBLIC_SUPABASE_ANON_KEY في Vercel ثم أعد النشر'
+      );
+      if (supabase) {
+        setMemories((m) => [
+          {
+            id: String(Date.now()),
+            name: name.trim(),
+            content: content.trim(),
+            type: 'memory',
+            created_at: new Date().toISOString(),
+          },
+          ...m,
+        ]);
+        setName('');
+        setContent('');
+      }
     }
     setIsSubmitting(false);
   };
@@ -157,6 +178,9 @@ export default function MemoryDrop() {
           >
             {isSubmitting ? 'Adding...' : 'Add Memory ✨'}
           </button>
+          {error && (
+            <p className="mt-4 text-red-500 text-sm text-center">{error}</p>
+          )}
         </motion.form>
 
         <div className="space-y-4 mb-12">
