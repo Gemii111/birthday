@@ -1,0 +1,6 @@
+# Supabase config - project_ref from your dashboard
+[api]
+enabled = true
+
+[db]
+port = 54322
