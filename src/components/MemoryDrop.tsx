@@ -80,19 +80,6 @@ export default function MemoryDrop() {
         throw new Error('No Supabase');
       }
     } catch {
-      setMemories((m) => [
-        {
-          id: String(Date.now()),
-          name: name.trim(),
-          content: content.trim(),
-          type: 'memory',
-          created_at: new Date().toISOString(),
-        },
-        ...m,
-      ]);
-      setName('');
-      setContent('');
-    } catch {
       setError(
         supabase
           ? 'حدث خطأ. حاول مرة تانية.'
