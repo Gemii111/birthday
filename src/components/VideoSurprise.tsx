@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 interface VideoSurpriseProps {
   videoUrl?: string;
@@ -10,6 +10,16 @@ interface VideoSurpriseProps {
 
 export default function VideoSurprise({ videoUrl, posterUrl }: VideoSurpriseProps) {
   const [hasError, setHasError] = useState(false);
+  const [showPlayOverlay, setShowPlayOverlay] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const handleTapToPlay = () => {
+    const video = videoRef.current;
+    if (video) {
+      video.play();
+      setShowPlayOverlay(false);
+    }
+  };
 
   return (
     <section className="relative min-h-screen py-24 bg-slate-900">
@@ -42,18 +52,35 @@ export default function VideoSurprise({ videoUrl, posterUrl }: VideoSurpriseProp
           transition={{ duration: 0.6 }}
         >
           {videoUrl && !hasError ? (
-            <video
-              src={videoUrl}
-              poster={posterUrl || undefined}
-              controls
-              playsInline
-              preload="metadata"
-              onError={() => setHasError(true)}
-              className="w-full h-full object-cover"
-              style={{ touchAction: 'manipulation' }}
-            >
-              المتصفح لا يدعم تشغيل الفيديو
-            </video>
+            <>
+              <video
+                ref={videoRef}
+                src={videoUrl}
+                poster={posterUrl || undefined}
+                controls
+                playsInline
+                preload="metadata"
+                onError={() => setHasError(true)}
+                onPlay={() => setShowPlayOverlay(false)}
+                onEnded={() => setShowPlayOverlay(true)}
+                className="w-full h-full object-cover"
+              >
+                المتصفح لا يدعم تشغيل الفيديو
+              </video>
+              {showPlayOverlay && (
+                <button
+                  type="button"
+                  onClick={handleTapToPlay}
+                  className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-4 bg-black/50 text-cream-100 min-h-[200px] cursor-pointer active:bg-black/40"
+                  aria-label="تشغيل الفيديو"
+                >
+                  <span className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center text-4xl">
+                    ▶
+                  </span>
+                  <span className="text-lg font-medium">اضغط للتشغيل</span>
+                </button>
+              )}
+            </>
           ) : hasError ? (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-cream-200 p-6 text-center">
               <span className="text-6xl">⚠️</span>
