@@ -175,14 +175,14 @@ export default function VoiceMessagesWall() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             disabled={isRecording || isUploading}
-            className="w-full mb-4 px-4 py-3 rounded-xl border border-cream-400 focus:border-blush-400 focus:ring-2 focus:ring-blush-200 outline-none transition disabled:opacity-60"
+            className="w-full mb-4 px-4 py-3 min-h-[48px] rounded-xl border border-cream-400 focus:border-blush-400 focus:ring-2 focus:ring-blush-200 outline-none transition disabled:opacity-60 text-base"
           />
           <div className="flex gap-4">
             {!isRecording ? (
               <button
                 onClick={startRecording}
                 disabled={isUploading || !name.trim()}
-                className="flex-1 py-4 rounded-xl bg-blush-400 text-white font-semibold hover:bg-blush-500 disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center justify-center gap-2"
+                className="flex-1 py-4 min-h-[52px] rounded-xl bg-blush-400 text-white font-semibold hover:bg-blush-500 disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center justify-center gap-2 text-base"
               >
                 {isUploading ? (
                   <>جاري الرفع...</>
@@ -196,7 +196,7 @@ export default function VoiceMessagesWall() {
             ) : (
               <button
                 onClick={stopRecording}
-                className="flex-1 py-4 rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 transition flex items-center justify-center gap-2 animate-pulse"
+                className="flex-1 py-4 min-h-[52px] rounded-xl bg-red-500 text-white font-semibold hover:bg-red-600 transition flex items-center justify-center gap-2 animate-pulse text-base"
               >
                 <span className="w-3 h-3 bg-white rounded-full" />
                 اضغط للإيقاف
@@ -232,7 +232,7 @@ export default function VoiceMessagesWall() {
                 />
                 <button
                   onClick={() => togglePlay(msg.id, msg.audio_url)}
-                  className={`w-14 h-14 shrink-0 rounded-full flex items-center justify-center transition-all ${
+                  className={`w-14 h-14 min-w-[56px] min-h-[56px] shrink-0 rounded-full flex items-center justify-center transition-all ${
                     playingId === msg.id
                       ? 'bg-blush-400 text-white'
                       : 'bg-blush-100 text-blush-500 hover:bg-blush-200'

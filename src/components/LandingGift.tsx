@@ -24,8 +24,8 @@ export default function LandingGift({ onOpen }: LandingGiftProps) {
     <motion.div
       className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1.2 }}
+      exit={{ opacity: 0, pointerEvents: 'none' }}
+      transition={{ duration: 0.5 }}
     >
       {/* Ambient gradient overlay */}
       <div className="absolute inset-0 bg-gradient-radial from-blush-300/10 via-transparent to-transparent opacity-40" />
@@ -56,12 +56,10 @@ export default function LandingGift({ onOpen }: LandingGiftProps) {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={handleOpen}
-          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blush-300 to-blush-400 px-10 py-4 font-sans text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+          className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blush-300 to-blush-400 px-10 py-5 min-h-[52px] font-sans text-lg font-semibold text-white shadow-xl transition-all duration-300 active:scale-[0.98]"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 1.8, duration: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
         >
           <motion.span
             className="relative z-10 flex items-center gap-2"

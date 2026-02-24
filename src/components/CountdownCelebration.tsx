@@ -25,26 +25,12 @@ export default function CountdownCelebration({ birthdayDate }: CountdownCelebrat
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         setHasReachedZero(true);
         setShowCake(true);
-        // Confetti burst!
+        // احتفال بسيط
         confetti({
-          particleCount: 150,
-          spread: 70,
+          particleCount: 40,
+          spread: 50,
           origin: { y: 0.6 },
         });
-        setTimeout(() => {
-          confetti({
-            particleCount: 100,
-            angle: 60,
-            spread: 55,
-            origin: { x: 0 },
-          });
-          confetti({
-            particleCount: 100,
-            angle: 120,
-            spread: 55,
-            origin: { x: 1 },
-          });
-        }, 250);
         setMusicVolume(0.7);
         return;
       }

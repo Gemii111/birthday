@@ -18,8 +18,8 @@ export default function LevelUpReveal({ age = 27 }: LevelUpRevealProps) {
       hasConfetti.current = true;
       const t = setTimeout(() => {
         confetti({
-          particleCount: 80,
-          spread: 60,
+          particleCount: 25,
+          spread: 45,
           origin: { y: 0.7 },
         });
       }, 600);

@@ -35,6 +35,7 @@ export default function VideoSurprise({ videoUrl, posterUrl }: VideoSurpriseProp
 
         <motion.div
           className="relative aspect-video rounded-2xl overflow-hidden bg-slate-800 polaroid-shadow"
+          style={{ touchAction: 'manipulation' }}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -45,10 +46,11 @@ export default function VideoSurprise({ videoUrl, posterUrl }: VideoSurpriseProp
               src={videoUrl}
               poster={posterUrl || undefined}
               controls
-              className="w-full h-full object-cover"
               playsInline
               preload="metadata"
               onError={() => setHasError(true)}
+              className="w-full h-full object-cover"
+              style={{ touchAction: 'manipulation' }}
             >
               المتصفح لا يدعم تشغيل الفيديو
             </video>

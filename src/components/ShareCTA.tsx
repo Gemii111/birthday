@@ -28,9 +28,7 @@ export default function ShareCTA() {
           href={config.createFormUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-block px-10 py-4 rounded-2xl bg-gradient-to-r from-blush-400 to-blush-500 text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.98 }}
+          className="inline-block px-10 py-4 min-h-[52px] rounded-2xl bg-gradient-to-r from-blush-400 to-blush-500 text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all active:scale-[0.98]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

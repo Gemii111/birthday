@@ -149,19 +149,19 @@ export default function MemoryDrop() {
             placeholder="Your name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full mb-4 px-4 py-3 rounded-xl border border-cream-400 focus:border-blush-400 focus:ring-2 focus:ring-blush-200 outline-none transition"
+            className="w-full mb-4 px-4 py-3 min-h-[48px] rounded-xl border border-cream-400 focus:border-blush-400 focus:ring-2 focus:ring-blush-200 outline-none transition text-base"
           />
           <textarea
             placeholder="Write a memory..."
             value={content}
             onChange={(e) => setContent(e.target.value)}
             rows={3}
-            className="w-full mb-4 px-4 py-3 rounded-xl border border-cream-400 focus:border-blush-400 focus:ring-2 focus:ring-blush-200 outline-none transition resize-none"
+            className="w-full mb-4 px-4 py-3 min-h-[48px] rounded-xl border border-cream-400 focus:border-blush-400 focus:ring-2 focus:ring-blush-200 outline-none transition resize-none text-base"
           />
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full py-3 rounded-xl bg-blush-400 text-white font-semibold hover:bg-blush-500 transition disabled:opacity-50"
+            className="w-full py-4 min-h-[48px] rounded-xl bg-blush-400 text-white font-semibold hover:bg-blush-500 transition disabled:opacity-50 text-base"
           >
             {isSubmitting ? 'Adding...' : 'Add Memory ✨'}
           </button>
@@ -192,9 +192,7 @@ export default function MemoryDrop() {
 
         <motion.button
           onClick={handleShare}
-          className="block mx-auto px-8 py-4 rounded-2xl bg-slate-800 text-cream-100 font-semibold hover:bg-slate-700 transition"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
+          className="block mx-auto px-8 py-4 min-h-[48px] rounded-2xl bg-slate-800 text-cream-100 font-semibold hover:bg-slate-700 transition active:scale-[0.98]"
         >
           {shared ? '✓ Link Copied!' : 'Share This Page 📤'}
         </motion.button>
